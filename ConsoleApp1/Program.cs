@@ -46,16 +46,7 @@ namespace Week5Update
                         StudentResponseArray[i_question] = Console.ReadLine();
                     }
 
-                    // Show if answer is correct
-                    if(isAnswerCorrect(i_question))
-                    {
-                        Console.WriteLine("Correct!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Incorrect!");
-                        Console.WriteLine("The correct answer is:  " + SolutionKeyArray[i_question]);
-                    }
+                    showAnswerResults(i_question);
 
                     i_question = i_question + 1;
                 }
@@ -78,43 +69,43 @@ namespace Week5Update
             SolutionKeyArray = new String[numQuestions];
             StudentResponseArray = new String[numQuestions];
 
-            QuestionArray[0] = "Question 1: The Spartans were the only soldiers at Thermopylae. True or False";
+            QuestionArray[0] = "The Spartans were the only soldiers at Thermopylae.";
             OptionArray[0] = new string[] { "True or False"};
             SolutionKeyArray[0] = "false";
 
-            QuestionArray[1] = "Question 2: This civilization had a Ceasar";
+            QuestionArray[1] = "This civilization had a Ceasar.";
             OptionArray[1] = new string[] { "Rome", "Greece", "Macedonia", "Persia" };            
             SolutionKeyArray[1] = "Rome";
 
-            QuestionArray[2] = "Question 3: Germany placed the first object into space";
+            QuestionArray[2] = "Germany placed the first object into space.";
             OptionArray[2] = new string[] { "True or False" };
             SolutionKeyArray[2] = "true";
 
-            QuestionArray[3] = "Question 4: The year humans first landed on the moon this year";
+            QuestionArray[3] = "The year humans first landed on the moon this year";
             OptionArray[3] = new string[] { "1968", "1969", "1965", "1970" };
             SolutionKeyArray[3] = "1969";
 
-            QuestionArray[4] = "Question 5: The Titanic had no faults on its maiden voyage.True or False";
+            QuestionArray[4] = "The Titanic had no faults on its maiden voyage.";
             OptionArray[4] = new string[] { "True or False" };
             SolutionKeyArray[4] = "false";
 
-            QuestionArray[5] = "Question 6: The year William The Conqueror invaded Great Britain";
+            QuestionArray[5] = "The year William The Conqueror invaded Great Britain.";
             OptionArray[5] = new string[] { "1501", "1051", "1066", "1102"};
             SolutionKeyArray[5] = "1066";
 
-            QuestionArray[6] = "Question 7: Pi has a finite number of decimals. True or False";
+            QuestionArray[6] = "Pi has a finite number of decimals.";
             OptionArray[6] = new string[] { "True or False" };
             SolutionKeyArray[6] = "false";
 
-            QuestionArray[7] = "Question 8: Popular sci-fi franchise based a long time ago in a galaxy far far away";
+            QuestionArray[7] = "Popular sci-fi franchise based a long time ago in a galaxy far far away";
             OptionArray[7] = new string[] { "Star Trek", "Dr Who", "Conan the Barbarian", "Star Wars" };
             SolutionKeyArray[7] = "Star Wars";
 
-            QuestionArray[8] = "Question 9: Harrison Ford rescued distressed hikers with his helicopter. True or False";
+            QuestionArray[8] = "Harrison Ford rescued distressed hikers with his helicopter.";
             OptionArray[8] = new string[] { "True or False" };
             SolutionKeyArray[8] = "true";
 
-            QuestionArray[9] = "Question 10: The tallest building in the world.";
+            QuestionArray[9] = "The tallest building in the world.";
             OptionArray[9] = new string[] { "Empire State Building", "Shanghai Tower", "Burj Khalifa", "Wuhan Greenland Center"};
             SolutionKeyArray[9] = "Burj Khalifa";
 
@@ -123,7 +114,7 @@ namespace Week5Update
         static void printQuestionWithOptions(int questionNumber)
         {
             Console.WriteLine(); //Adds a line between questions.
-            Console.WriteLine(QuestionArray[questionNumber]);
+            Console.WriteLine("Question " + (questionNumber+1).ToString() +": " + QuestionArray[questionNumber]);
             if (isTrueFalseQuestion(questionNumber))
             {
                 Console.WriteLine("True or False");
@@ -206,6 +197,24 @@ namespace Week5Update
                 return (studentResponse == solutionWord || studentResponse == solutionLetter);
             }
         }
+
+        static void showAnswerResults(int questionNumber)
+        {
+            // Show if answer is correct
+            if(isAnswerCorrect(questionNumber))
+            {
+                Console.WriteLine("Correct!");
+            }
+            else
+            {
+                Console.WriteLine("Incorrect!");
+                Console.WriteLine("The correct answer is:  " + SolutionKeyArray[questionNumber]);
+            }
+        }
+
+
+
+
 
         // Turns a number to a string: 1>A, 4>D, and so on.
         static String Number2String(int number, bool isCaps)
