@@ -17,7 +17,7 @@ namespace Week5Update
         // Should be an array of arrays
         // A single element array indicates a True/False question, 
         // Otherwise, a multiple choice.
-        static string[] OptionArray;
+        static string[][] OptionArray;
         // Solution: Correct Answers
         static string[] SolutionKeyArray;
         // Raw student responses
@@ -34,31 +34,42 @@ namespace Week5Update
             numQuestions = 10;
 
             QuestionArray = new String[numQuestions];
-            OptionArray = new String[numQuestions];
+            OptionArray = new String[numQuestions][];
             SolutionKeyArray = new String[numQuestions];
             StudentResponseArray = new String[numQuestions];
 
             QuestionArray[0] = "Question 1: The Spartans were the only soldiers at Thermopylae. True or False";
-            OptionArray[0] = "True or False";
-            SolutionKeyArray[0] = "False";
+            OptionArray[0] = new string[] { "True or False"};
+            SolutionKeyArray[0] = "false";
+
             QuestionArray[1] = "Question 2: This civilization had a Ceasar";
-            OptionArray[1] = "A: Rome  B: Greece   C: Macedonia  D: Persia";
+            OptionArray[1] = new string[] { "Rome", "Greece", "Macedonia", "Persia" };            
+
             QuestionArray[2] = "Question 3: Germany placed the first object into space";
-            OptionArray[2] = "True or False";
+            OptionArray[2] = new string[] { "True or False" };
+
             QuestionArray[3] = "Question 4: The year humans first landed on the moon this year";
-            OptionArray[3] = "A: 1968  B: 1969   C: 1965  D: 1970";
+            OptionArray[3] = new string[] { "1968", "1969", "1965", "1970" };
+
             QuestionArray[4] = "Question 5: The Titanic had no faults on its maiden voyage.True or False";
-            OptionArray[4] = "True or False";
+            OptionArray[4] = new string[] { "True or False" };
+
             QuestionArray[5] = "Question 6: The year William The Conqueror invaded Great Britain";
-            OptionArray[5] = "A: 1501  B: 1051  C: 1066  D: 1102";
+            OptionArray[5] = new string[] { "1501", "1051", "1066", "1102"};
+
             QuestionArray[6] = "Question 7: Pi has a finite number of decimals. True or False";
-            OptionArray[6] = "True or False";
+            OptionArray[6] = new string[] { "True or False" };
+
             QuestionArray[7] = "Question 8: Popular sci-fi franchise based a long time ago in a galaxy far far away";
-            OptionArray[7] = "A: Star Trek  B: Dr Who  C: Conan the Barbarian  D: Star Wars";
+            OptionArray[7] = new string[] { "Star Trek", "Dr Who", "Conan the Barbarian", "Star Wars" };
+
             QuestionArray[8] = "Question 9: Harrison Ford rescued distressed hikers with his helicopter. True or False";
-            OptionArray[8] = "True or False";
+            OptionArray[8] = new string[] { "True or False" };
+
             QuestionArray[9] = "Question 10: The tallest building in the world.";
-            OptionArray[9] = "A: Empire State Building  B: Shanghai Tower  C: Burj Khalifa  D: Wuhan Greenland Center";
+            OptionArray[9] = new string[] { "Empire State Building", "Shanghai Tower",
+                             "Burj Khalifa", "Wuhan Greenland Center"};
+
 
             while (numTries > 0)
             {
@@ -175,21 +186,36 @@ namespace Week5Update
 
         }
 
-        static string WriteTryAgain()
+        static void printQuestion(int questionNumber)
         {
-            Console.WriteLine("Invalid entry, try again");
-            return Console.ReadLine();
+            // TODO: Include options, handling True/False and multiple choice appropriately.
+            Console.WriteLine(QuestionArray[questionNumber]);
         }
 
-        static void ShowQuestion(int i)
+        /* True/False questiosn are handled differently than 
+            multiple choice questions, so differentiating them is important.
+            If the option array is the single entry "True or False"
+            then it indicates we aren't dealing with a 
+            multiple choice question.
+         */ 
+        static bool isTrueFalseQuestion(int answerNumber)
         {
-
+            return OptionArray[answerNumber].Length == 1;            
         }
 
-        static Boolean TakeAnswer(int i)
-        {
 
+        // Determine if the Student Response fits one of the 
+        // Given response options.
+        static bool isValidAnswer(int answerNumber)
+        {
+            //TODO:
             return true;
+        }
+
+        static bool isAnswerCorrect(int answerNumber)
+        {
+            // TODO: Create seperate implementation for T/F vs Multiple choice answers.
+            return StudentResponseArray[answerNumber] == SolutionKeyArray[answerNumber]
         }
 
     }
