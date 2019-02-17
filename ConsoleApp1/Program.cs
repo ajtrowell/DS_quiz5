@@ -8,23 +8,39 @@ namespace Week5Update
 {
     class Program
     {
+
+        static int numTries;
+        static int numQuestions;
+        // Questions for quiz
+        static string[] QuestionArray;
+        //Options for answers to quiz
+        // Should be an array of arrays
+        // A single element array indicates a True/False question, 
+        // Otherwise, a multiple choice.
+        static string[] OptionArray;
+        // Solution: Correct Answers
+        static string[] SolutionKeyArray;
+        // Raw student responses
+        static string[] StudentResponseArray;
+
         static void Main(string[] args)
         {
             Console.WriteLine("Submitted by: David San Clemente");
             Console.WriteLine("Engineering 115");
             Console.WriteLine("Checkpoint 5 for Quiz");
 
-            int numQuestions = 10;
-            int numTries = 3;
-            String[] QuestionArray = new String[numQuestions];
-            String[] AnswerArray = new String[numQuestions];
-            String[] OptionArray = new String[numQuestions];
-            String[] StudentArray = new String[numQuestions];
-            String[] ResponseArray = new String[numQuestions];
+            
+            numTries = 3;
+            numQuestions = 10;
+
+            QuestionArray = new String[numQuestions];
+            OptionArray = new String[numQuestions];
+            SolutionKeyArray = new String[numQuestions];
+            StudentResponseArray = new String[numQuestions];
 
             QuestionArray[0] = "Question 1: The Spartans were the only soldiers at Thermopylae. True or False";
             OptionArray[0] = "True or False";
-            ResponseArray[0] = "False";
+            SolutionKeyArray[0] = "False";
             QuestionArray[1] = "Question 2: This civilization had a Ceasar";
             OptionArray[1] = "A: Rome  B: Greece   C: Macedonia  D: Persia";
             QuestionArray[2] = "Question 3: Germany placed the first object into space";
@@ -53,7 +69,6 @@ namespace Week5Update
                     Console.WriteLine(OptionArray[i]);
                     Console.ReadLine();
 
-
                     i = i + 1;
 
                 }
@@ -61,96 +76,96 @@ namespace Week5Update
                 numTries = numTries - 1;
             }
 
-            if (ResponseArray[0] == "False" || ResponseArray[0] == "false")
+            if (SolutionKeyArray[0] == "False" || SolutionKeyArray[0] == "false")
             {
                 Console.WriteLine("Correct");
             }
-            else if (ResponseArray[0] != "False" || ResponseArray[0] != "false")
+            else if (SolutionKeyArray[0] != "False" || SolutionKeyArray[0] != "false")
             {
                 Console.WriteLine("Incorrect");
             }
 
-            if (ResponseArray[1] == "a" || ResponseArray[1] == "A" || ResponseArray[1] == "rome" || ResponseArray[1] == "Rome")
+            if (SolutionKeyArray[1] == "a" || SolutionKeyArray[1] == "A" || SolutionKeyArray[1] == "rome" || SolutionKeyArray[1] == "Rome")
             {
                 Console.WriteLine("Correct");
             }
-            else if (ResponseArray[1] != "a" || ResponseArray[1] != "A" || ResponseArray[1] != "rome" || ResponseArray[1] != "Rome")
-            {
-                Console.WriteLine("Incorrect");
-
-            }
-
-            if (ResponseArray[2] == "True" || ResponseArray[2] == "true")
-            {
-                Console.WriteLine("Correct");
-            }
-            else if (ResponseArray[2] != "True" || ResponseArray[2] != "true")
-            {
-                Console.WriteLine("Incorrect");
-            }
-
-            if (ResponseArray[3] == "b" || ResponseArray[3] == "B" || ResponseArray[3] == "1969")
-            {
-                Console.WriteLine("Correct");
-            }
-            else if (ResponseArray[3] != "b" || ResponseArray[3] != "B" || ResponseArray[3] != "1969")
+            else if (SolutionKeyArray[1] != "a" || SolutionKeyArray[1] != "A" || SolutionKeyArray[1] != "rome" || SolutionKeyArray[1] != "Rome")
             {
                 Console.WriteLine("Incorrect");
 
             }
 
-            if (ResponseArray[4] == "False" || ResponseArray[4] == "false")
+            if (SolutionKeyArray[2] == "True" || SolutionKeyArray[2] == "true")
             {
                 Console.WriteLine("Correct");
             }
-            else if (ResponseArray[4] != "False" || ResponseArray[4] != "true")
+            else if (SolutionKeyArray[2] != "True" || SolutionKeyArray[2] != "true")
             {
                 Console.WriteLine("Incorrect");
             }
 
-            if (ResponseArray[5] == "c" || ResponseArray[5] == "C" || ResponseArray[5] == "1066")
+            if (SolutionKeyArray[3] == "b" || SolutionKeyArray[3] == "B" || SolutionKeyArray[3] == "1969")
             {
                 Console.WriteLine("Correct");
             }
-            else if (ResponseArray[5] != "c" || ResponseArray[5] != "C" || ResponseArray[5] != "1066")
-            {
-                Console.WriteLine("Incorrect");
-
-            }
-
-            if (ResponseArray[6] == "False" || ResponseArray[6] == "false")
-            {
-                Console.WriteLine("Correct");
-            }
-            else if (ResponseArray[6] != "False" || ResponseArray[6] != "true")
-            {
-                Console.WriteLine("Incorrect");
-            }
-
-            if (ResponseArray[7] == "d" || ResponseArray[7] == "D" || ResponseArray[7] == "Star Wars" || ResponseArray[7] == "star wars")
-            {
-                Console.WriteLine("Correct");
-            }
-            else if (ResponseArray[7] != "d" || ResponseArray[7] != "D" || ResponseArray[7] != "Star Wars" || ResponseArray[7] != "star wars")
+            else if (SolutionKeyArray[3] != "b" || SolutionKeyArray[3] != "B" || SolutionKeyArray[3] != "1969")
             {
                 Console.WriteLine("Incorrect");
 
             }
 
-            if (ResponseArray[8] == "True" || ResponseArray[8] == "true")
+            if (SolutionKeyArray[4] == "False" || SolutionKeyArray[4] == "false")
             {
                 Console.WriteLine("Correct");
             }
-            else if (ResponseArray[8] != "True" || ResponseArray[8] != "true")
+            else if (SolutionKeyArray[4] != "False" || SolutionKeyArray[4] != "true")
             {
                 Console.WriteLine("Incorrect");
             }
 
-            if (ResponseArray[9] == "c" || ResponseArray[9] == "C" || ResponseArray[9] == "Burj Khalifa" || ResponseArray[9] == "burj khalifa")
+            if (SolutionKeyArray[5] == "c" || SolutionKeyArray[5] == "C" || SolutionKeyArray[5] == "1066")
             {
                 Console.WriteLine("Correct");
             }
-            else if (ResponseArray[9] != "c" || ResponseArray[9] != "C" || ResponseArray[9] != "Burj Khalifa" || ResponseArray[9] != "burj khalifa")
+            else if (SolutionKeyArray[5] != "c" || SolutionKeyArray[5] != "C" || SolutionKeyArray[5] != "1066")
+            {
+                Console.WriteLine("Incorrect");
+
+            }
+
+            if (SolutionKeyArray[6] == "False" || SolutionKeyArray[6] == "false")
+            {
+                Console.WriteLine("Correct");
+            }
+            else if (SolutionKeyArray[6] != "False" || SolutionKeyArray[6] != "true")
+            {
+                Console.WriteLine("Incorrect");
+            }
+
+            if (SolutionKeyArray[7] == "d" || SolutionKeyArray[7] == "D" || SolutionKeyArray[7] == "Star Wars" || SolutionKeyArray[7] == "star wars")
+            {
+                Console.WriteLine("Correct");
+            }
+            else if (SolutionKeyArray[7] != "d" || SolutionKeyArray[7] != "D" || SolutionKeyArray[7] != "Star Wars" || SolutionKeyArray[7] != "star wars")
+            {
+                Console.WriteLine("Incorrect");
+
+            }
+
+            if (SolutionKeyArray[8] == "True" || SolutionKeyArray[8] == "true")
+            {
+                Console.WriteLine("Correct");
+            }
+            else if (SolutionKeyArray[8] != "True" || SolutionKeyArray[8] != "true")
+            {
+                Console.WriteLine("Incorrect");
+            }
+
+            if (SolutionKeyArray[9] == "c" || SolutionKeyArray[9] == "C" || SolutionKeyArray[9] == "Burj Khalifa" || SolutionKeyArray[9] == "burj khalifa")
+            {
+                Console.WriteLine("Correct");
+            }
+            else if (SolutionKeyArray[9] != "c" || SolutionKeyArray[9] != "C" || SolutionKeyArray[9] != "Burj Khalifa" || SolutionKeyArray[9] != "burj khalifa")
             {
                 Console.WriteLine("Incorrect");
 
