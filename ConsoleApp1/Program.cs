@@ -46,6 +46,17 @@ namespace Week5Update
                         StudentResponseArray[i_question] = Console.ReadLine();
                     }
 
+                    // Show if answer is correct
+                    if(isAnswerCorrect(i_question))
+                    {
+                        Console.WriteLine("Correct!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Incorrect!");
+                        Console.WriteLine("The correct answer is:  " + SolutionKeyArray[i_question]);
+                    }
+
                     i_question = i_question + 1;
                 }
 
@@ -97,15 +108,14 @@ namespace Week5Update
 
             QuestionArray[7] = "Question 8: Popular sci-fi franchise based a long time ago in a galaxy far far away";
             OptionArray[7] = new string[] { "Star Trek", "Dr Who", "Conan the Barbarian", "Star Wars" };
-            SolutionKeyArray[6] = "Star Wars";
+            SolutionKeyArray[7] = "Star Wars";
 
             QuestionArray[8] = "Question 9: Harrison Ford rescued distressed hikers with his helicopter. True or False";
             OptionArray[8] = new string[] { "True or False" };
             SolutionKeyArray[8] = "true";
 
             QuestionArray[9] = "Question 10: The tallest building in the world.";
-            OptionArray[9] = new string[] { "Empire State Building", "Shanghai Tower",
-                             "Burj Khalifa", "Wuhan Greenland Center"};
+            OptionArray[9] = new string[] { "Empire State Building", "Shanghai Tower", "Burj Khalifa", "Wuhan Greenland Center"};
             SolutionKeyArray[9] = "Burj Khalifa";
 
         }
@@ -175,7 +185,26 @@ namespace Week5Update
         static bool isAnswerCorrect(int answerNumber)
         {
             // TODO: Create seperate implementation for T/F vs Multiple choice answers.
-            return StudentResponseArray[answerNumber] == SolutionKeyArray[answerNumber];
+            //return StudentResponseArray[answerNumber] == SolutionKeyArray[answerNumber];
+            string studentResponse = StudentResponseArray[answerNumber].ToLower();
+
+            if(isTrueFalseQuestion(answerNumber))
+            {
+                // If we share the first letter, we're correct.
+                return studentResponse[0] == SolutionKeyArray[answerNumber].ToLower()[0];
+            } 
+            else
+            {
+                // Evaluate multiple choice answer for correctness.
+                string solutionWord = SolutionKeyArray[answerNumber].ToLower();
+                int solutionIndex;
+                for(solutionIndex=0; solutionIndex<OptionArray[answerNumber].Length; solutionIndex++)
+                    if(solutionWord == OptionArray[answerNumber][solutionIndex].ToLower())
+                        break;
+                string solutionLetter = Number2String(solutionIndex + 1, false);
+
+                return (studentResponse == solutionWord || studentResponse == solutionLetter);
+            }
         }
 
         // Turns a number to a string: 1>A, 4>D, and so on.
