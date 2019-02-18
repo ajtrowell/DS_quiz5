@@ -46,13 +46,23 @@ namespace Week5Update
                         StudentResponseArray[i_question] = Console.ReadLine();
                     }
 
-                    showAnswerResults(i_question);
+                        // Show if answer is correct
+                        if(isAnswerCorrect(i_question))
+                        {
+                            Console.WriteLine("Correct!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Incorrect!");
+                            //Console.WriteLine("The correct answer is:  " + SolutionKeyArray[questionNumber]);
+                            StudentResponseArray[i_question] = ""; // Make answer invalid so it displays on next run.
+                        }
 
-                    i_question = i_question + 1;
+                        i_question = i_question + 1;
+                    }
+
+                    numTries = numTries - 1;
                 }
-
-                numTries = numTries - 1;
-            }
 
             Console.Read(); // Run until final keypress.
 
@@ -197,24 +207,6 @@ namespace Week5Update
                 return (studentResponse == solutionWord || studentResponse == solutionLetter);
             }
         }
-
-        static void showAnswerResults(int questionNumber)
-        {
-            // Show if answer is correct
-            if(isAnswerCorrect(questionNumber))
-            {
-                Console.WriteLine("Correct!");
-            }
-            else
-            {
-                Console.WriteLine("Incorrect!");
-                Console.WriteLine("The correct answer is:  " + SolutionKeyArray[questionNumber]);
-            }
-        }
-
-
-
-
 
         // Turns a number to a string: 1>A, 4>D, and so on.
         static String Number2String(int number, bool isCaps)
